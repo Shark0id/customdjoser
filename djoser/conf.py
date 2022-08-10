@@ -70,7 +70,6 @@ default_settings = {
             "password_reset": "djoser.email.PasswordResetEmail",
             "password_changed_confirmation": "djoser.email.PasswordChangedConfirmationEmail",
             "username_changed_confirmation": "djoser.email.UsernameChangedConfirmationEmail",
-            "email_changed_confirmation": "djoser.email.EmailChangedConfirmationEmail",
             "username_reset": "djoser.email.UsernameResetEmail",
         }
     ),
