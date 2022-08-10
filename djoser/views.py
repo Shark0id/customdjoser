@@ -148,12 +148,11 @@ class UserViewSet(viewsets.ModelViewSet):
     def perform_update(self, serializer):
         super().perform_update(serializer)
         user = serializer.instance
-        # should we send activation email after update?
-        if settings.SEND_ACTIVATION_EMAIL:
-            context = {"user": user}
-            to = [get_user_email(user)]
-            settings.EMAIL.activation(self.request, context).send(to)
-
+        context = {"user": user}
+        to = [get_user_email(user)]
+        if 'name' in self.request.data :
+            settings.EMAIL.email_changed_confirmation(self.request, context).send(to)
+            
     def destroy(self, request, *args, **kwargs):
         instance = self.get_object()
         serializer = self.get_serializer(instance, data=request.data)
